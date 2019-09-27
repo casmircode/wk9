@@ -1,0 +1,38 @@
+<div class="bd">
+  <div class="form-group">
+    <label for="item">Book Title</label>
+    <input class="form-control" [(ngModel)]="item" id="item" />
+    <label for="item">Publication Date</label>
+    <input class="form-control" type="date" [(ngModel)]="pDate" id="item" />
+    <label for="item">Select Book Type: </label>
+    <br>
+    <input id="hardCover" type="radio" [(ngModel)]="bType" value="Hard Cover" />Hard Cover
+    <input id="paperBack" type="radio" [(ngModel)]="bType" value="Paper Back" />Paper Back
+    <br>
+    <label for="item">Book Summary</label>
+    <br>
+    <textarea class="form-control" [(ngModel)]="summary" rows="2">write summary...</textarea>
+  </div>
+  <button class="btn btn-primary" (click)="addItem()">Save Book {{data.length}}</button>
+  <button class="btn btn-success" (click)="clearItems()">Delete Hard Cover {{cH}}</button>
+  <!-- <div *ngIf="data.length>0">You have {{data.length}} items</div>
+  <div *ngIf="data.length==2">Caution: 2 items in your array</div> <br> -->
+  <table class="table table-hover">
+    <tr>
+      <th> Id </th>
+      <th> Item </th>
+      <th> Publication</th>
+      <th> Type </th>
+      <th> Summary </th>
+      <th> Delete? </th>
+    </tr>
+
+    <tr *ngFor="let item of data; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{item.item}}</td>
+      <td>{{item.pDate}}</td>
+      <td>{{item.bType}}</td>
+      <td>{{item.summary}}</td>
+      <td><button class="btn btn-danger" (click)="deleteItem(i)">Delete?</button></td>
+  </table>
+</div>
